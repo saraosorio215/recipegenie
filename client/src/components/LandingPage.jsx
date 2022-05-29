@@ -35,7 +35,7 @@ const LandingPage = (props) => {
                     for(const [key, value] of Object.entries(res.data.meals[0])){
                         let single = "strIngredient" + i;
                         if(key === single){
-                            if(value !== '' && value !== null){
+                            if(value.length >= 2 && value !== '' && value !== null){
                                 ingredients.push(`${value}`)
                             }
                         }
@@ -47,7 +47,7 @@ const LandingPage = (props) => {
                     for(const [key, value] of Object.entries(res.data.meals[0])){
                         let singleVal = "strMeasure" + i;
                         if(key === singleVal){
-                            if(value !== '' && value !== null){
+                            if(value.length >= 2 && value !== '' && value !== null){
                                 measure.push(`${value}`)
                             }
                         }
@@ -56,6 +56,7 @@ const LandingPage = (props) => {
                 setCurrAmt(measure);
                 setFinish(true);
                 setSideBarOpen(true);
+                console.log(measure);
             })
             .catch(err=>console.error(err))
     }
@@ -71,7 +72,7 @@ const LandingPage = (props) => {
                     for(const [key, value] of Object.entries(res.data.meals[0])){
                         let single = "strIngredient" + i;
                         if(key === single){
-                            if(value !== '' && value !== null){
+                            if(value !== ' ' && value !== '' && value !== null){
                                 ingredients.push(`${value}`)
                             }
                         }
@@ -83,7 +84,7 @@ const LandingPage = (props) => {
                     for(const [key, value] of Object.entries(res.data.meals[0])){
                         let singleVal = "strMeasure" + i;
                         if(key === singleVal){
-                            if(value !== '' && value !== null){
+                            if(value !== ' ' && value !== '' && value !== null){
                                 measure.push(`${value}`)
                             }
                         }
@@ -202,21 +203,21 @@ const LandingPage = (props) => {
                             </div>
                         </div>
                         <div className='marg-left-10 marg-right-10 padding-left-10 padding-right-10'>
-                            <div className="flex body just-left marg-left-20 padding-left-10 padding-right-10">
-                                <div>
+                            <div className="flex body just-left marg-left-20 padding-left-10 padding-right-10" id='block'>
+                                <div id='center'>
                                     <img src={meal.strMealThumb} id="mainrecipepic"/>
                                 </div>
-                                <div className='marg-left-20 padding-left-10'>
-                                    <div>
+                                <div className='marg-left-20 padding-left-10' id='no-margin'>
+                                    <div id='ingred-title'>
                                         <span id="med-text">INGREDIENTS:</span>
-                                        <div className="flex full-ingred sp-btw" id="small-text">
-                                            <div>
+                                        <div className="flex full-ingred sp-btw" id='full-rec-ingred'>
+                                            <div id="small-text">
                                             {currIngred.map((ingred, i)=>
                                                 <div key={i}>
                                                     <li className="line-spc">{capitalizeFirstLetter(ingred)}</li>
                                                 </div>)}
                                             </div>
-                                            <div>
+                                            <div id="small-text">
                                             {currAmt.map((amt, i)=>
                                                 <div key={i}>
                                                     <span className="line-spc marg-left-10">{amt}</span>
@@ -226,7 +227,7 @@ const LandingPage = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="padding-left-10 padding-right-10 line-spc body marg-left-20 marg-right-20 move-up padding-bottom-10 marg-bottom-10">
+                            <div className="padding-left-10 padding-right-10 line-spc body marg-left-20 marg-right-20 padding-bottom-10 marg-bottom-10">
                                 <p id="med-text">INSTRUCTIONS: <br />
                                 <span id="small-text">{meal.strInstructions}</span></p>
                             </div>
