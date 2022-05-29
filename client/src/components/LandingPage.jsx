@@ -131,7 +131,7 @@ const LandingPage = (props) => {
     return (
         <>
             <div className="header flex sp-btw">
-                <div className='hidden'>
+                <div className='hidden' id='hidden'>
                 </div>
                 <div>
                     <h2 className="header-link">Recipe Genie</h2>
@@ -144,21 +144,21 @@ const LandingPage = (props) => {
                 </div>
             </div>
             {meal && finish && sidebarOpen ?
-            <div className="Sidebar body">
+            <div className="Sidebar body" id='sidebar'>
                 <div className='flex right'>
-                    <button className="sidebar-icon sidebar-burger" onClick={handleViewSidebar}>X</button>
+                    <button className="sidebar-icon sidebar-burger" id='close-btn' onClick={handleViewSidebar}>X</button>
                 </div>
                 <div className="sidebar-header centered body">
                     <h1 className="sidebar-logo center body">{meal.strMeal.toUpperCase()}</h1>
                 </div>
                 <div className='all-ingreds marg-left-10 marg-right-10 padding-left-10 padding-right-10'>
-                <div className="flex body just-cent padding-top-20">
-                    <div className="marg-right-20">
+                <div className="flex body just-cent padding-top-20" id='block'>
+                    <div className="marg-right-20" id='center'>
                         <img src={meal.strMealThumb} id="recipepic"/>
                     </div>
                     <div className="marg-left-20">
                         INGREDIENTS:
-                        <div className="flex ingreds">
+                        <div className="flex ingreds" id='ingreds'>
                             <div>
                             {currIngred.map((ingred, i)=>
                                 <div key={i}>
